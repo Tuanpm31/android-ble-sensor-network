@@ -1,0 +1,76 @@
+plugins {
+    id('com.android.application')
+    id('kotlin-android')
+    id('androidx.navigation.safeargs.kotlin')
+    id('kotlin-kapt')
+    id('dagger.hilt.android.plugin')
+}
+
+android {
+    compileSdkVersion(Versions.COMPILE_SDK_VERSION)
+    buildToolsVersion(Versions.BUILD_TOOL_VERSION)
+
+    defaultConfig {
+        applicationId "me.phmtuan.blesensornetwork"
+        minSdkVersion(Versions.MIN_SDK_VERSION)
+        targetSdkVersion(Versions.TARGET_SDK_VERSION)
+        versionCode(Versions.VERSION_CODE)
+        versionName(Versions.VERSION_NAME)
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    implementation(Dependencies.KOTLIN_STD_LIB)
+    implementation(Dependencies.CORE_KTX)
+
+    implementation(Dependencies.APP_COMPAT)
+
+    implementation(Dependencies.MATERIAL)
+    implementation(Dependencies.CONSTRAIN_LAYOUT)
+
+
+    testImplementation(Dependencies.JUNIT)
+    androidTestImplementation(Dependencies.EXT_JUNIT)
+    androidTestImplementation(Dependencies.ESPRESSO_CORE)
+
+    implementation(Dependencies.SERIALIZER_JSON)
+
+    // Life cycle
+    implementation(Dependencies.LIFE_CYCLE_VIEW_MODEL)
+    implementation(Dependencies.LIFE_CYCLE_LIVE_DATA)
+    implementation(Dependencies.LIFE_CYCLE_RUNTIME)
+    implementation(Dependencies.LIFE_CYCLE_SAVED_STATE)
+
+    // Navigation
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
+
+    // Coroutines
+    implementation(Dependencies.COROUTINES_ANDROID)
+
+    // Hilt
+    implementation(Dependencies.HILT_ANDROID)
+    kapt(Dependencies.HILT_ANDROID_COMPILE)
+
+    // Nordicsemi bluetooth low energy
+    implementation(Dependencies.NORDICSEMI_BLE)
+    implementation(Dependencies.NORDICSEMI_BLE_LIVE_DATA)
+
+}
